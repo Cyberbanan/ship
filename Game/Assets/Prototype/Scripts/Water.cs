@@ -13,6 +13,7 @@ public class Water : MonoBehaviour {
 
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "Player") {
+			Debug.Log ("DEATH");
 			// Kill the player
 			Destroy(other.gameObject);
 		}
