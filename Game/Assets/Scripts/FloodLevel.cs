@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
 public class FloodLevel : MonoBehaviour {
 
@@ -13,10 +12,7 @@ public class FloodLevel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		var rand = new System.Random();
-		var moveWater = rand.Next(3) == 0;
-		if (moveWater) {
-
-		}
+		float speed = Random.Range (0, 0.02f);
+		transform.Translate(-speed, 0, 0);
 	}
 }

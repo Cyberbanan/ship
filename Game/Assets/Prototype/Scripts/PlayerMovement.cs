@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float accelerationAmount = 1.0f;
 	private float maxSpeed = 1.0f;
 	private float maxSpeedSqr;
+	private bool dead = false;
 
 	void Awake()
 	{
@@ -26,9 +27,24 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		}
 	}
+
+	public void Die()
+	{
+		Debug.Log ("DEATH");
+		dead = true;
+	}
 	
 	private void HandleInput()
 	{
+		if (Input.GetKeyDown(KeyCode.Space))
+		{
+			dead = false;
+		}
+		if (dead)
+		{
+			rigidbody.velocity = Vector3.zero;
+			return;
+		}
 		Vector2 inputDir = Vector2.zero;
 
 		inputDir.x = Input.GetAxisRaw("Horizontal");
