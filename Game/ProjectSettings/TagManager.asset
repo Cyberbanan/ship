@@ -45,6 +45,10 @@ TagManager:
     userID: 5
     uniqueID: 2791009593
     locked: 0
+  - name: Water
+    userID: 6
+    uniqueID: 2718746609
+    locked: 0
   - name: Wall
     userID: 4
     uniqueID: 2533313609
