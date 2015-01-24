@@ -14,7 +14,8 @@ public class Water : MonoBehaviour {
 	void OnTriggerEnter (Collider other) {
 		if (other.tag == "Player") {
 			// Kill the player
-			Destroy(other.gameObject);
+			PlayerMovement player = (PlayerMovement) other.gameObject.GetComponent(typeof(PlayerMovement));
+			player.Die();
 		}
 	}
 }
