@@ -3,8 +3,8 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public float moveSpeed = 10.0f;
-	public float maxSpeed = 0.1f;
+	private float accelerationAmount = 1.0f;
+	private float maxSpeed = 1.0f;
 	private float maxSpeedSqr;
 
 	void Awake()
@@ -21,22 +21,30 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		HandleInput();
 
-		/*if(rigidbody.velocity.sqrMagnitude > maxSpeedSqr)
+		if(rigidbody.velocity.sqrMagnitude > maxSpeedSqr)
 		{
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
-		}*/
+		}
 	}
 	
 	private void HandleInput()
 	{
 		Vector2 inputDir = Vector2.zero;
 
-		inputDir.x = Input.GetAxis("Horizontal");
-		inputDir.y = Input.GetAxis("Vertical");
-		inputDir.Normalize();
+		inputDir.x = Input.GetAxisRaw("Horizontal");
+		inputDir.y = Input.GetAxisRaw("Vertical");
 
-		//rigidbody.AddForce(acceleration, ForceMode.Impulse);
+		if(inputDir.sqrMagnitude >= 0.01f)
+		{
+			inputDir.Normalize();
 
-		rigidbody.velocity = inputDir * moveSpeed;
+			Vector3 acceleration = new Vector3(inputDir.x * accelerationAmount, 0.0f, inputDir.y * accelerationAmount);
+
+			rigidbody.AddForce(acceleration, ForceMode.Impulse);
+		}
+		else
+		{
+			rigidbody.velocity = Vector3.zero;
+		}
 	}
 }
