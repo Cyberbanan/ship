@@ -2198,7 +2198,7 @@ GameObject:
   - 136: {fileID: 43497431}
   m_Layer: 8
   m_Name: PrototypePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4280,6 +4280,10 @@ Prefab:
     - target: {fileID: 497662, guid: 7a2f5200a98254557b324dd0d03aaf69, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 197662, guid: 7a2f5200a98254557b324dd0d03aaf69, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7a2f5200a98254557b324dd0d03aaf69, type: 2}
@@ -29751,7 +29755,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GridWidth: 32
   GridHeight: 32
-  TileSize: .319999993
   GroundPrefab: {fileID: 134012, guid: 2b700c380db5844658f8c31ff27630cc, type: 2}
   WallPrefab: {fileID: 100000, guid: b9fbe01a9b8bf4a209b3e349f42af998, type: 2}
   WaterPrefab: {fileID: 134012, guid: 2b700c380db5844658f8c31ff27630cc, type: 2}
@@ -32351,7 +32354,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d5da7c80599e4d4890f9e9190985469, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObject: {fileID: 0}
+  targetObject: {fileID: 197662, guid: 7a2f5200a98254557b324dd0d03aaf69, type: 2}
+  WaterPrefab: {fileID: 155222, guid: 63e41f097f4b14a45aaf3c4b561d66a5, type: 2}
 --- !u!1 &876289039
 GameObject:
   m_ObjectHideFlags: 0

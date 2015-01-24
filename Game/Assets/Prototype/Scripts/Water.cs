@@ -12,6 +12,9 @@ public class Water : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		Destroy(other.gameObject);
+		if (other.tag == "Player") {
+			// Kill the player
+			Destroy(other.gameObject);
+		}
 	}
 }
