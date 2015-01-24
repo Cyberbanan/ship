@@ -3,26 +3,40 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
-	public float moveAcceleration = 5.0f;
-	public float maxSpeed = 10.0f;
+	public float moveSpeed = 10.0f;
+	public float maxSpeed = 0.1f;
+	private float maxSpeedSqr;
+
+	void Awake()
+	{
+		maxSpeedSqr = maxSpeed * maxSpeed;
+	}
 
 	void Start()
 	{
 		
 	}
 
-	void Update()
+	void FixedUpdate()
 	{
-		
+		HandleInput();
+
+		/*if(rigidbody.velocity.sqrMagnitude > maxSpeedSqr)
+		{
+			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
+		}*/
 	}
-
-	private void HandleUpdate()
+	
+	private void HandleInput()
 	{
-		Vector3 acceleration = Vector3.zero;
+		Vector2 inputDir = Vector2.zero;
 
-		acceleration.x = Input.GetAxis("Horizontal") * 5.0f;
-		acceleration.z = Input.GetAxis("Vertical") * 5.0f;
+		inputDir.x = Input.GetAxis("Horizontal");
+		inputDir.y = Input.GetAxis("Vertical");
+		inputDir.Normalize();
 
-		rigidbody.AddForce(acceleration, ForceMode.Acceleration);
+		//rigidbody.AddForce(acceleration, ForceMode.Impulse);
+
+		rigidbody.velocity = inputDir * moveSpeed;
 	}
 }
