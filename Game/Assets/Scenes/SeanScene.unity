@@ -262,6 +262,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1393683987}
   - 212: {fileID: 1393683986}
+  - 65: {fileID: 1393683988}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -304,6 +305,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!65 &1393683988
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 6526572, guid: 4aa013f6163954554a81eb40a6e31c1f,
+    type: 2}
+  m_PrefabInternal: {fileID: 1440836008}
+  m_GameObject: {fileID: 1393683985}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: .00999999978}
+  m_Center: {x: 0, y: 0, z: 1}
 --- !u!1001 &1440836008
 Prefab:
   m_ObjectHideFlags: 0
