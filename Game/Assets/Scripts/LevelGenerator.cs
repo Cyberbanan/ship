@@ -34,7 +34,7 @@ public class LevelGrid
 public class LevelGenerator : MonoBehaviour {
 	public int GridWidth;
 	public int GridHeight;
-	public float TileSize = 0.32f;
+	public static float TileSize = 0.32f;
 
 	public Tile Ground = new Tile (Tile.TileType.Ground);
 	public Tile Wall = new Tile (Tile.TileType.Wall);
@@ -62,9 +62,9 @@ public class LevelGenerator : MonoBehaviour {
 			Wall,
 			Door
 		};
-		
+
 		// Generate the level layout
-		var rand = new System.Random (1);		
+		var rand = new System.Random (1); 
 		for (int y = 0; y < GridHeight; y++)
 		{
 			for (int x = 0; x < GridWidth; x++)
