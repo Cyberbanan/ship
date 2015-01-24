@@ -12,9 +12,9 @@ TagManager:
   Builtin Layer 5: UI
   Builtin Layer 6: 
   Builtin Layer 7: 
-  User Layer 8: 
-  User Layer 9: 
-  User Layer 10: 
+  User Layer 8: Character
+  User Layer 9: Obstacle
+  User Layer 10: Interactable
   User Layer 11: 
   User Layer 12: 
   User Layer 13: 
@@ -40,4 +40,24 @@ TagManager:
   - name: Default
     userID: 0
     uniqueID: 0
+    locked: 0
+  - name: Floor
+    userID: 5
+    uniqueID: 2791009593
+    locked: 0
+  - name: Wall
+    userID: 4
+    uniqueID: 2533313609
+    locked: 0
+  - name: Character
+    userID: 3
+    uniqueID: 3520973941
+    locked: 0
+  - name: Interactable
+    userID: 1
+    uniqueID: 134515211
+    locked: 0
+  - name: Above
+    userID: 2
+    uniqueID: 470527255
     locked: 0
