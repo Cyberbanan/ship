@@ -1,7 +1,8 @@
 fileFormatVersion: 2
 guid: bcfa0fc910f78449aaac5c2d34bc3e5d
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: protoPlayer1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
