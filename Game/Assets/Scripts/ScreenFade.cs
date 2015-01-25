@@ -172,6 +172,7 @@ public class ScreenFade : MonoBehaviour {
 
 	public void FadeToBlack(float fadeDuration = 2.0f)
 	{
+		duration = fadeDuration;
 		timer = 0.0f;
 		state = FadeState.FadingToBlack;
 		prevColor = new Color(image.color.r, image.color.g, image.color.b, image.color.a);
@@ -180,6 +181,7 @@ public class ScreenFade : MonoBehaviour {
 
 	public void FadeToWhite(float fadeDuration = 2.0f)
 	{
+		duration = fadeDuration;
 		timer = 0.0f;
 		state = FadeState.FadingToWhite;
 		prevColor = new Color(image.color.r, image.color.g, image.color.b, image.color.a);
@@ -188,6 +190,7 @@ public class ScreenFade : MonoBehaviour {
 
 	public void FadeToClear(float fadeDuration = 2.0f)
 	{
+		duration = fadeDuration;
 		timer = 0.0f;
 		state = FadeState.FadingToClear;
 		prevColor = new Color(image.color.r, image.color.g, image.color.b, image.color.a);

@@ -44,7 +44,7 @@ public class PlayerMovement : MonoBehaviour {
 	public void Die()
 	{
 		Debug.Log ("DEATH");
-		ScreenFade.main.FadeToBlack(1.5f);
+		ScreenFade.main.FadeToBlack(1.0f);
 		ScreenFade.main.RestartNext();
 		dead = true;
 	}
