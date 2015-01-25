@@ -12,4 +12,13 @@ public class DadTrigger : MonoBehaviour {
 	void Update () {
 	
 	}
+
+	void OnTriggerEnter(Collider other) {
+		if (other.tag == "Player")
+		{
+			// Aww... how sweet. You win! Hug! Hug! Hug!
+
+
+		}
+	}
 }
