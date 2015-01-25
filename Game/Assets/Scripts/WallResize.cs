@@ -20,6 +20,7 @@ public class WallResize : MonoBehaviour {
 	[System.NonSerialized]
 	public WallState state = WallState.Growing;
 
+	private static Vector3 initScale;
 	private static float currentScale = 1.0f;
 	private const float GROWTH_FACTOR = 0.00001f;
 	private const float MAX_SCALE = 1.7f;
@@ -32,7 +33,12 @@ public class WallResize : MonoBehaviour {
 	private float breatheScaleTIme = 1.5f;
 
 	private BreatheState breatheState = BreatheState.Wait;
-	
+
+	void Awake()
+	{
+		initScale = transform.localScale;
+	}
+
 	void Update()
 	{
 		if(!scaleChangedThisFrame)
@@ -69,12 +75,14 @@ public class WallResize : MonoBehaviour {
 						timer = 0.0f;
 					}
 
+					scaleChangedThisFrame = true;
+
 					break;
 
 				case BreatheState.Grow:
 					timer += Time.deltaTime;
 
-					if(timer < breatheScaleTIme)
+					if(timer > breatheScaleTIme)
 					{
 						breatheState = BreatheState.Shrink;
 						timer = 0.0f;
@@ -92,9 +100,9 @@ public class WallResize : MonoBehaviour {
 				case BreatheState.Shrink:
 					timer += Time.deltaTime;
 
-					if(timer < breatheScaleTIme)
+					if(timer > breatheScaleTIme)
 					{
-						breatheState = BreatheState.Shrink;
+						breatheState = BreatheState.Wait;
 						timer = 0.0f;
 						currentScale = MIN_SCALE;
 					}
@@ -119,7 +127,7 @@ public class WallResize : MonoBehaviour {
 
 		if(scaleChangedThisFrame)
 		{
-			transform.localScale = new Vector3(transform.localScale.x * currentScale, transform.localScale.y * currentScale, transform.localScale.z);
+			transform.localScale = new Vector3(initScale.x * currentScale, initScale.y * currentScale, initScale.z);
 		}
 	}
 
