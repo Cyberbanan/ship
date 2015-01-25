@@ -36,6 +36,8 @@ public class LevelImporter : MonoBehaviour {
 		Wall.prefab = WallPrefab;
 		Water.prefab = WaterPrefab;
 		Door.prefab = DoorPrefab;
+		Tile NullTile = new Tile ();
+		NullTile.prefab = null;
 
 		int width = texture.width;
 		int height = texture.height;
@@ -59,6 +61,7 @@ public class LevelImporter : MonoBehaviour {
 				else if (IsCloseColor(pixel, Color.white))
 				{
 					//grid.tiles[x, y] = Ground;
+					grid.tiles[x, y] = NullTile;
 				}
 				else if (IsCloseColor(pixel, Color.blue))
 				{
@@ -79,6 +82,9 @@ public class LevelImporter : MonoBehaviour {
 		{
 			for (int x = 0; x < width; x++)
 			{
+				if (grid.tiles[x, y].prefab == null)
+					continue;
+
 				GameObject obj = (GameObject)GameObject.Instantiate(grid.tiles[x, y].prefab);
 				obj.transform.position = new Vector3(x, 0, y) * TileSize;
 				obj.transform.parent = level.transform;
