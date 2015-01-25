@@ -241,7 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  maxSpeed: .5
+  maxSpeed: .300000012
   randomizedMovementFrequency: .300000012
   maxDistanceFromTarget: 3.5
   teleportDistance: .200000003

@@ -6,7 +6,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Enemy movement
 	public GameObject targetObject;
-	public float maxSpeed = 0.5f;
+	public float maxSpeed = 0.3f;
 	public float randomizedMovementFrequency = 0.3f;
 	private float accelerationAmount = 1.0f;
 	private float maxSpeedSqr;
@@ -19,6 +19,8 @@ public class EnemyMovement : MonoBehaviour {
 	// want you to teleport toward the player
 	public float maxDistanceFromTarget = 4.0f;
 	public float teleportDistance = 0.1f;
+
+	private float lurchTimer = 0.10f;
 
 	// setting water collision flags
 	/*
@@ -42,6 +44,26 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
+		// Calculate out movement
+		Vector3 directionToTravel = new Vector3 (0.0f, 0.0f, 0.0f);
+		Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
+
+		lurchTimer -= Time.deltaTime;
+		if (lurchTimer > 0) {
+			maxSpeed = 3.0f;
+		} else {
+			maxSpeed = 0.3f;
+			if (Random.value <= 0.03) {
+				lurchTimer = 0.10f;
+				Vector3 randomDirection = new Vector3 (Random.value - 0.5f, 0.0f, Random.value - 0.5f).normalized * 10.0f;
+				Vector3 acceleration2 = new Vector3 (randomDirection.x * accelerationAmount, 0.0f, randomDirection.z * accelerationAmount);
+				rigidbody.AddForce (acceleration2, ForceMode.Impulse);
+				Debug.DrawRay (transform.position, randomDirection * 2, Color.yellow);
+			}
+
+		}
+
+
 		/*
 		waterTriggerTimeout -= Time.deltaTime;
 		respawnTimeout -= Time.deltaTime;
@@ -56,29 +78,28 @@ public class EnemyMovement : MonoBehaviour {
 		if (isActive) {
 		*/
 
-			// Calculate out movement
-			Vector3 directionToTravel = new Vector3 (0.0f, 0.0f, 0.0f);
-			Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
-		
-			if (!isColliding) {
-				// don't need to path find, so move toward the target
-				directionToTravel = vectorToTarget.normalized;
-				Debug.DrawRay (transform.position, directionToTravel * 2, Color.white);
-			}
+			
+
+			// don't need to path find, so move toward the target
+			directionToTravel = vectorToTarget.normalized;
+			Debug.DrawRay (transform.position, directionToTravel * 2, Color.white);
+
 		
 			// if we're too far from the player, teleport the enemy a bit closer
 			float currentDistanceFromTarget = vectorToTarget.magnitude;
 			if (currentDistanceFromTarget > maxDistanceFromTarget) {
-				transform.position = transform.position + directionToTravel * teleportDistance;
-				isColliding = false;
+				//transform.position = transform.position + directionToTravel * teleportDistance;
+				//isColliding = false;
 			}
-		
+
+			/*
 			if (Random.value <= randomizedMovementFrequency) {
 				// Add a random force
 				Vector3 randomDirection = new Vector3 (Random.value - 0.5f, 0.0f, Random.value - 0.5f).normalized;
 				directionToTravel += randomDirection;
 				Debug.DrawRay (transform.position, randomDirection * 2, Color.yellow);
 			}
+			*/
 		
 			// add the forces
 			Vector3 acceleration = new Vector3 (directionToTravel.x * accelerationAmount, 0.0f, directionToTravel.z * accelerationAmount);
