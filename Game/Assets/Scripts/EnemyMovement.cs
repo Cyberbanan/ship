@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class EnemyMovement : MonoBehaviour {
 
 	// Enemy movement
-	public GameObject targetObject;
+	private GameObject targetObject;
 	public float randomizedMovementFrequency = 0.01f;
 	private float accelerationAmount = 1.0f;
 	
@@ -17,9 +17,13 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Awake() {
 	}
+
+	void Start() {
+		targetObject = Player.main.gameObject;
+	}
 	
 	void FixedUpdate() {
-		// Calculate out movement
+		// Calculate a direction toward the target
 		Vector3 directionToTravel = new Vector3 (0.0f, 0.0f, 0.0f);
 		Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
 
