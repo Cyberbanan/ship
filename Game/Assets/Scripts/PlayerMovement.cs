@@ -53,6 +53,10 @@ public class PlayerMovement : MonoBehaviour {
 	{
 		dead = false;
 		floodFade.restart ();
+		GameObject[] monsters = GameObject.FindGameObjectsWithTag("Monster");
+		foreach (GameObject monster in monsters) {
+			monster.GetComponent<EnemyMovement>().reset();
+		}
 	}
 	
 	private void HandleInput()
