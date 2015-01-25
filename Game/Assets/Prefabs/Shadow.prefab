@@ -442,7 +442,7 @@ MonoBehaviour:
   randomizedMovementFrequency: .0199999996
   activeByDefault: 0
   distToActivate: 1
-  activationDelayStart: 1
+  activationDelayStart: 2
   maxDistanceFromTarget: 5
   teleportDistanceFromTarget: 4
   stunTimeTotal: 3
