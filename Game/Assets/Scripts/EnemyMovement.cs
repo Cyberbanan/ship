@@ -64,7 +64,10 @@ public class EnemyMovement : MonoBehaviour {
 
 		// if you're not active, stay rotated away from player. Activate when they get close.
 		if (!isActive) {
-			audio.mute = true;
+			foreach(AudioSource s in GetComponents<AudioSource>())
+			{
+				s.mute = true;
+			}
 			rotateTowardsTarget(false);
 			if (distToTarget() <= distToTriggerRotate && !pm.isInGlow()) {
 				isActive = true;
@@ -82,12 +85,18 @@ public class EnemyMovement : MonoBehaviour {
 		// Stunned because player is in the light
 		stunTimeCurrent -= Time.deltaTime;
 		if (stunTimeCurrent > 0) {
-			audio.mute = true;
+			foreach(AudioSource s in GetComponents<AudioSource>())
+			{
+				s.mute = true;
+			}
 			// move self far away since we can't do rgba
 			resetPositionOnlyWithLevel(targetPlayer.currentLevel);
 		}
 
-		audio.mute = false;
+		foreach(AudioSource s in GetComponents<AudioSource>())
+		{
+			s.mute = false;
+		}
 
 		// If active, make sure you lurch randomly
 		if (Random.value <= randomizedMovementFrequency) {
