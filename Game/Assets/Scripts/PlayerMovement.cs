@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerMovement : MonoBehaviour {
 
 	private const float MAX_ROTSPEED_PER_SEC = 1000.0f;
+	public Text objectText;
 
 	private float accelerationAmount = 1.0f;
 	private float maxSpeed = 1.0f;
@@ -103,6 +105,9 @@ public class PlayerMovement : MonoBehaviour {
 				floodFade.setPause(true);
 			}
 			isSafe = true;
+
+			// print text;
+			objectText.text = other.transform.parent.GetComponent<MemoryObjectText>().objectText;
 		}
 	}
 
@@ -114,6 +119,8 @@ public class PlayerMovement : MonoBehaviour {
 				floodFade.setPause(false);
 			}
 			isSafe = false;
+
+			objectText.text = "";
 		}
 	}
 	

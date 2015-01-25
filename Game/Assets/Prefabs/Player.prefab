@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 199ed1ca9c65d447da31e57938371b9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  objectText: {fileID: 0}
+  floodFade: {fileID: 0}
 --- !u!136 &13605590
 CapsuleCollider:
   m_ObjectHideFlags: 1

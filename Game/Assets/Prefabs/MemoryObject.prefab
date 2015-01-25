@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21221354}
   - 135: {fileID: 13521356}
   - 114: {fileID: 11496072}
+  - 114: {fileID: 11447880}
   m_Layer: 10
   m_Name: MemoryObject
   m_TagString: SafeZone
@@ -41,7 +42,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121354}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .707106888, y: 0, z: 0, w: .707106769}
   m_LocalPosition: {x: 9.93000031, y: 0, z: 6.07999992}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -60,6 +61,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421354}
   m_RootOrder: 0
+--- !u!114 &11447880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f59579fdd34324258bdec07f8dac35e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectText: 
 --- !u!114 &11496072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,6 +93,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 6abc221f8f5c6434e9b955a79d562082, type: 3}
   - {fileID: 21300000, guid: 5879d3bcadaf2479880d345220844c62, type: 3}
   - {fileID: 21300000, guid: 90975d70c7bfa4858a7f8b8c33f504ae, type: 3}
+  messages:
+  - I always loved the stories you told
+  - Another birthday without you
+  - You missed my graduation
+  - You never got to see me wear this dress
+  - You never got to meet my son
+  - We were so happy in this photo
+  - Your presents were always the best
+  - You got me this for me on my 3rd birthday
 --- !u!135 &13521354
 SphereCollider:
   m_ObjectHideFlags: 1

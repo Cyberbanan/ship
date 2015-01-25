@@ -3,6 +3,8 @@ using System.Collections;
 
 public class SizeToScreen : MonoBehaviour {
 
+	// THIS SCRIPT DOESN'T DO ANYTHING. CAN DELETE.
+
 	// Use this for initialization
 	void Start () {
 	
