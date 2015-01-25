@@ -20,7 +20,7 @@ public class FloodFade : MonoBehaviour {
 		float timePassed = timeToFlood - timeLeftToFlood;
 		float opacity = (timePassed / timeToFlood);
 
-		counterText.text = opacity + "%";
+		counterText.text = (opacity*100) + "%";
 
 		opacity = opacity * 0.5f;
 		print (opacity);
