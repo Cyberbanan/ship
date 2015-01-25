@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		}
 
-		//activateFloods();
+		activateFloods();
 	}
 
 	public void Die()
