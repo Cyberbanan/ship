@@ -18,7 +18,8 @@ public class DadTrigger : MonoBehaviour {
 		{
 			// Aww... how sweet. You win! Hug! Hug! Hug!
 
-
+			ScreenFade.main.FadeToWhite();
+			ScreenFade.main.CreditsNext();
 		}
 	}
 }
