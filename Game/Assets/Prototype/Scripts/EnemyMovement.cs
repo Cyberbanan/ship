@@ -80,7 +80,6 @@ public class EnemyMovement : MonoBehaviour {
 				rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 			}
 		} else {
-			print (respawnTimeout);
 			// Respawn
 			if (respawnTimeout < 0) {
 				Collider waterNearTarget = RandomNearbyWater(targetObject.transform.position, teleportToWaterMaxDistance, teleportToWaterMinDistance);
@@ -89,21 +88,13 @@ public class EnemyMovement : MonoBehaviour {
 				}
 			}
 		}
-/*
-		if (other.gameObject.name == "Water") {
-			Collider waterNearTarget = RandomNearbyWater(targetObject.transform.position, teleportToWaterMaxDistance, teleportToWaterMinDistance);
-			if (waterNearTarget != null) {
-				transform.position = waterNearTarget.transform.position;
-			}
-		}
-		*/
 	}
 
 	/**
 	 * Path finding along walls
 	 * */
 	void OnCollisionStay(Collision collisionInfo) {
-		if (collisionInfo.gameObject.name == "Wall") {
+		if (collisionInfo.gameObject.tag == "Wall") {
 			// Goal is to move parallel to the wall
 			isColliding = true;
 		
@@ -125,7 +116,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	// If you're no longer colliding against walls
 	void OnCollisionExit(Collision collisionInfo) {
-		if (collisionInfo.gameObject.name == "Wall") {
+		if (collisionInfo.gameObject.tag == "Wall") {
 			isColliding = false;
 		}
 	}
@@ -137,7 +128,7 @@ public class EnemyMovement : MonoBehaviour {
 		Collider[] hitColliders = Physics.OverlapSphere(center, maxRadius);
 		List<Collider> waterColliders = new List<Collider>();
 		foreach (Collider hit in hitColliders) {
-			if (hit.gameObject.name == "Water") {
+			if (hit.gameObject.tag == "Water") {
 				if ((hit.transform.position - targetObject.transform.position).magnitude >= minRadius) {
 					waterColliders.Add(hit);
 				}
@@ -154,12 +145,13 @@ public class EnemyMovement : MonoBehaviour {
 	 * Water detection and only being active when on water
 	 * */
 	void OnTriggerStay(Collider other) {
-		if (other.gameObject.name == "Water") {
+		if (other.gameObject.tag == "Water") {
 			setActive(true);
 		}
 	}
 
 	void setActive(bool status) {
+		print ("setActive(" + status + ")");
 		isActive = status;
 		gameObject.renderer.GetComponent<SpriteRenderer> ().enabled = isActive;
 		if (!status) {
