@@ -88,6 +88,17 @@ public class LevelImporter : MonoBehaviour {
 				GameObject obj = (GameObject)GameObject.Instantiate(grid.tiles[x, y].prefab);
 				obj.transform.position = new Vector3(x, 0, y) * TileSize;
 				obj.transform.parent = level.transform;
+
+				if (grid.tiles[x, y].tileType == Tile.TileType.Door)
+				{
+					// Check if the door needs to be rotated
+					if (x > 0 && grid.tiles[x - 1, y].prefab == null)
+					{
+						Vector3 angles = obj.transform.rotation.eulerAngles;
+						angles.y += 90;
+						obj.transform.rotation = Quaternion.Euler(angles);
+					}
+				}
 			}
 		}
 	}
