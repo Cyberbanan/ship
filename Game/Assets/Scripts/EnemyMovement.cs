@@ -4,6 +4,10 @@ using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour {
 
+	private const float MAX_ROTSPEED_PER_SEC = 60.0f;
+	private const float ROTATE_OFFSET = -75.0f;
+	public const float distToTriggerRotate = 2.5f;
+
 	// Enemy movement
 	private Player targetPlayer;
 	private GameObject targetObject;
@@ -36,12 +40,14 @@ public class EnemyMovement : MonoBehaviour {
 		}
 
 		if (targetObject) {
+			Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
+			Vector3 directionToTarget = vectorToTarget.normalized;
+
 			PlayerMovement pm = targetPlayer.GetComponent<PlayerMovement>();
 
 			// Only move toward the player if they're not in the glow
 			if (!pm.isInGlow()) {
-				Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
-				Vector3 directionToTarget = vectorToTarget.normalized;
+
 				Debug.DrawRay (transform.position, directionToTarget * 2, Color.white);
 				Vector3 acceleration = new Vector3 (directionToTarget.x * accelerationAmount, 0.0f, directionToTarget.z * accelerationAmount);
 				rigidbody.AddForce (acceleration, ForceMode.Impulse);
@@ -55,7 +61,18 @@ public class EnemyMovement : MonoBehaviour {
 
 			*/
 
+			// if we're close to the player, rotate to show the mouth #creepy
+			Vector3 inputDir = directionToTarget;
+			float currentDistanceFromTarget = vectorToTarget.magnitude;
+			if (currentDistanceFromTarget > distToTriggerRotate || pm.isInGlow()) {
+				// if we're far from the player, rotate to hide the mouth #creepy
+				inputDir = directionToTarget * -1;
+			}
+			float angleY = Mathf.Atan2(-inputDir.x, -inputDir.z) * Mathf.Rad2Deg + ROTATE_OFFSET;
+			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(90.0f, angleY, 0.0f), MAX_ROTSPEED_PER_SEC * Time.fixedDeltaTime);
 		}
+
+
 	}
 
 }
