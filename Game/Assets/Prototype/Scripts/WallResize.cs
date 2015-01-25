@@ -4,7 +4,7 @@ using System.Collections;
 public class WallResize : MonoBehaviour {
 
 	private float currentScale = 1.0f;
-	private const float GROWTH_FACTOR = 0.01f;
+	private const float GROWTH_FACTOR = 0.00001f;
 	private const float MAX_SCALE = 1.7f;
 
 	void Update()

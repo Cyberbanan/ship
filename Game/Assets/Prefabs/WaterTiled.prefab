@@ -14,7 +14,7 @@ GameObject:
   - 114: {fileID: 11476720}
   m_Layer: 4
   m_Name: WaterTiled
-  m_TagString: Untagged
+  m_TagString: WaterTiled
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -82,7 +82,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 177b07fe148694e7f936db9182145d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToFlood: 120
+  timeToFlood: 60
   counterText: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
