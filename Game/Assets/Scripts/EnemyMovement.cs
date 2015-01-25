@@ -34,6 +34,10 @@ public class EnemyMovement : MonoBehaviour {
 	public float maxDistanceFromTarget = 5.0f;
 	public float teleportDistanceFromTarget = 4.0f;
 
+	// monster gets stunned by light
+	public float stunTimeTotal = 3.0f;
+	private float stunTimeCurrent;
+
 	void Awake() {
 		isActive = activeByDefault;
 		activationDelay = activationDelayStart;
@@ -75,6 +79,14 @@ public class EnemyMovement : MonoBehaviour {
 			return;
 		}
 
+		// Stunned because player is in the light
+		stunTimeCurrent -= Time.deltaTime;
+		if (stunTimeCurrent > 0) {
+			audio.mute = true;
+			// move self far away since we can't do rgba
+			resetPositionOnlyWithLevel(targetPlayer.currentLevel);
+		}
+
 		audio.mute = false;
 
 		// If active, make sure you lurch randomly
@@ -112,7 +124,9 @@ public class EnemyMovement : MonoBehaviour {
 
 				transform.position = new Vector3(newX, 0.0f, newZ);
 			}
-
+		} else {
+			// you're stunned, so deactivate for a bit
+			stunTimeCurrent = stunTimeTotal;
 		}
 
 		// if we're close to the player, rotate to show the mouth #creepy
@@ -129,7 +143,7 @@ public class EnemyMovement : MonoBehaviour {
 		resetToLevel (targetPlayer.currentLevel);
 	}
 
-	void resetToLevel(int level) {
+	void resetPositionOnlyWithLevel(int level) {
 		switch (level) {
 		case 0:
 			transform.position = level1Position;
@@ -143,6 +157,10 @@ public class EnemyMovement : MonoBehaviour {
 		default:
 			break;
 		}
+	}
+
+	void resetToLevel(int level) {
+		resetPositionOnlyWithLevel (level);
 		isActive = false;
 		activationDelay = activationDelayStart;
 	}
