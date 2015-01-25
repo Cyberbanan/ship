@@ -10,8 +10,8 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Default Locations
 	public Vector3 level1Position = new Vector3(-37.82f, 0.0f, 11.0f);
-	public Vector3 level2Position = new Vector3(27.65f, 0.0f, 21.1f);
-	public Vector3 level3Position = new Vector3(21.96f, 0.0f, -36.16f);
+	public Vector3 level2Position = new Vector3(27.94f, 0.0f, 21.09f);
+	public Vector3 level3Position = new Vector3(21.01f, 0.0f, -36.68f);
 
 	// Enemy movement
 	private Player targetPlayer;
@@ -25,7 +25,8 @@ public class EnemyMovement : MonoBehaviour {
 	public bool activeByDefault = false;
 	private bool isActive;
 	public float distToActivate = 1.0f;
-	public float activationDelay = 1.0f;
+	public float activationDelayStart = 1.0f;
+	private float activationDelay;
 
 	// if the max distance is too far from the player
 	// Need this because even if you're close, if you're stuck we
@@ -35,6 +36,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Awake() {
 		isActive = activeByDefault;
+		activationDelay = activationDelayStart;
 	}
 
 	void Start() {
@@ -48,6 +50,13 @@ public class EnemyMovement : MonoBehaviour {
 		if (targetObject == null) {
 			return;
 		}
+
+		// check for level transitions
+		if (playerLastLevel != targetPlayer.currentLevel) {
+			// transition!
+			resetToLevel(targetPlayer.currentLevel);
+		}
+		playerLastLevel = targetPlayer.currentLevel;
 
 		// if you're not active, stay rotated away from player. Activate when they get close.
 		if (!isActive) {
@@ -114,12 +123,6 @@ public class EnemyMovement : MonoBehaviour {
 			rotateTowardsTarget(true);
 		}
 
-		if (playerLastLevel != targetPlayer.currentLevel) {
-			// transition!
-			resetToLevel(targetPlayer.currentLevel);
-		}
-		playerLastLevel = targetPlayer.currentLevel;
-
 	}
 
 	void resetToLevel(int level) {
@@ -137,6 +140,7 @@ public class EnemyMovement : MonoBehaviour {
 			break;
 		}
 		isActive = false;
+		activationDelay = activationDelayStart;
 	}
 
 	float distToTarget() {
