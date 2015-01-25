@@ -81,7 +81,6 @@ public class PlayerMovement : MonoBehaviour {
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.0f);
 		foreach (Collider hit in hitColliders)
 		{
-			print (hit.gameObject.name);
 			if (hit.gameObject.tag == "WaterTiled")
 			{
 				FloodFade ff = (FloodFade) hit.gameObject.GetComponent(typeof(FloodFade));
