@@ -12,10 +12,10 @@ public class Water : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider other) {
-		if (other.tag == "Player") {
+		/*if (other.tag == "Player") {
 			// Kill the player
 			PlayerMovement player = (PlayerMovement) other.gameObject.GetComponent(typeof(PlayerMovement));
 			player.Die();
-		}
+		}*/
 	}
 }
