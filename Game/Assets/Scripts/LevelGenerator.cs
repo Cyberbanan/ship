@@ -96,18 +96,31 @@ public class LevelGenerator : MonoBehaviour {
 				// TODO: We failed. Couldn't find a space large enough.
 				// Need to handle this more gracefuully since it could be an
 				// ending room.
+				Debug.Log("Failed to find a spot for a room!");
 				return;
 			}
+		}
+
+		if (!RoomFits (space, room))
+		{
+			Debug.Log("Post find spot failure");
+			return;
 		}
 		
 		// Pick a random corner to anchor the room in
 		int[] xVals = {0, space.width - room.width};
 		int[] yVals = {0, space.height - room.height};
+
+		if (room.width > space.width || room.height > space.height)
+		{
+			Debug.LogError("TRIED TO PLACE ROOM IN TOO SMALL A SPACE!!");
+			return;
+		}
 		
 		int leftRightSel = rand.Next (2);
 		int upDownSel = rand.Next (2);
-		room.x = xVals [leftRightSel];
-		room.y = yVals [upDownSel];
+		room.x = xVals [leftRightSel] + space.x;
+		room.y = yVals [upDownSel] + space.y;
 		finishedRooms.Add (room);
 		
 		// Add remaining spaces if appropriate
@@ -120,7 +133,7 @@ public class LevelGenerator : MonoBehaviour {
 		
 		int remainingWidth = space.width - hallwayWidth - room.width;
 		int remainingHeight = space.height - hallwayWidth - room.height;
-		
+
 		// Iterate over each quadrant of the space
 		for (int y = 0; y < 2; y++)
 		{
@@ -133,34 +146,68 @@ public class LevelGenerator : MonoBehaviour {
 				Room extraSpace = new Room();
 				
 				// TODO: Avoid quarters and combine 2 of the areas?
-				if (x == leftRightSel)
+				if (x == 0)
 				{
-					extraSpace.width = room.width;
-					extraSpace.x = room.x;
+					if (leftRightSel == 0)
+					{
+						extraSpace.width = room.width;
+						extraSpace.x = room.x;
+					}
+					else
+					{
+						extraSpace.width = remainingWidth;
+						extraSpace.x = space.x;
+					}
 				}
 				else
 				{
-					extraSpace.width = remainingWidth;
-					extraSpace.x = space.x;
+					if (leftRightSel == 1)
+					{
+						extraSpace.width = room.width;
+						extraSpace.x = room.x;
+					}
+					else
+					{
+						extraSpace.width = remainingWidth;
+						extraSpace.x = space.x + room.width + hallwayWidth;
+					}
 				}
-				
-				if (y == upDownSel)
+
+				if (y == 0)
 				{
-					extraSpace.height = room.height;
-					extraSpace.y = room.y;
+					if (upDownSel == 0)
+					{
+						extraSpace.height = room.height;
+						extraSpace.y = room.y;
+					}
+					else
+					{
+						extraSpace.height = remainingHeight;
+						extraSpace.y = space.y;
+					}
 				}
 				else
 				{
-					extraSpace.height = remainingHeight;
-					extraSpace.y = space.y;
+					if (upDownSel == 1)
+					{
+						extraSpace.height = room.height;
+						extraSpace.y = room.y;
+					}
+					else
+					{
+						extraSpace.height = remainingHeight;
+						extraSpace.y = space.y + room.height + hallwayWidth;
+					}
 				}
 				
-				if (room.width < 4 || room.height < 4)
+				if (extraSpace.width < 4 || extraSpace.height < 4)
 				{
 					// Ain't no one got a use for tiny rooms
 					continue;
 				}
-				
+
+				//Debug.Log("Empty space: <" + extraSpace.x + ", " + extraSpace.y + "> <" + extraSpace.width
+				//          + ", " + extraSpace.height + ">");
 				emptySpaces.Enqueue(extraSpace);
 			}
 		}
@@ -218,7 +265,14 @@ public class LevelGenerator : MonoBehaviour {
 			{
 				bool topBottom = (y == room.y || y == (room.y + room.height - 1));
 				bool leftRight = (x == room.x || x == (room.x + room.width - 1));
-				
+
+				if (x < 0 || y < 0)
+				{
+					Debug.Log("" + x + ", " + y);
+					Debug.Log("" + room.x + ", " + room.y + "\n"
+					          + room.width + ", " + room.height);
+				}
+
 				if (topBottom || leftRight)
 				{
 					// Room wall
@@ -269,18 +323,25 @@ public class LevelGenerator : MonoBehaviour {
 		startingSpace.width = GridWidth;
 		startingSpace.height = GridHeight;
 		emptySpaces.Enqueue (startingSpace);
-		
+
+		int roomCount = 128;
 		// Create some rooms 'n' stuff
-		for (int i = 0; i < 32; i++)
+		for (int i = 0; i < roomCount; i++)
 		{
 			Room room = new Room();
 			room.width = rand.Next(4, 10);
 			room.height = rand.Next(4, 10);
+
+			if (Random.value < 0.8f)
+				room.doorCount = 1;
+			else
+				room.doorCount = 2;
+
 			roomQueue.Enqueue(room);
 		}
 		
 		// Proccess the rooms
-		for (int i = 0; i < 32; i++)
+		for (int i = 0; i < roomCount; i++)
 		{
 			ProcessRoom();
 		}
