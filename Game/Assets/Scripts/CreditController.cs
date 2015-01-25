@@ -121,6 +121,7 @@ public class CreditController : MonoBehaviour {
 		{
 			if (Input.anyKeyDown || Time.time > lastTimestamp + FinalTimeToReset)
 			{
+				Destroy(GameObject.Find("OutroMusic"));
 				Application.LoadLevel("TitleScreen");
 			}
 		}
