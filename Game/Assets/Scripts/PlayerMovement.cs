@@ -48,6 +48,7 @@ public class PlayerMovement : MonoBehaviour {
 	public void Revive()
 	{
 		dead = false;
+		floodFade.restart ();
 	}
 	
 	private void HandleInput()

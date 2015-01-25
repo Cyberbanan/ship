@@ -19,6 +19,11 @@ public class FloodFade : MonoBehaviour {
 		isPaused = status;
 	}
 
+	public void restart() {
+		timeLeftToFlood = timeToFlood;
+		activateTimer ();
+	}
+
 	// Use this for initialization
 	void Start () {
 		timeLeftToFlood = timeToFlood;
