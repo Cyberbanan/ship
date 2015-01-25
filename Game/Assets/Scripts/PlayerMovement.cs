@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour {
 	private bool dead = false;
 	private bool isSafe = false;
 
-	private FloodFade floodFade = null;
+	public FloodFade floodFade = null;
 
 	private Vector2 inputDir = Vector2.zero;
 
@@ -40,7 +40,7 @@ public class PlayerMovement : MonoBehaviour {
 	public void Die()
 	{
 		Debug.Log ("DEATH");
-		ScreenFade.main.FadeToBlack();
+		ScreenFade.main.FadeToBlack(1.5f);
 		ScreenFade.main.RestartNext();
 		dead = true;
 	}
