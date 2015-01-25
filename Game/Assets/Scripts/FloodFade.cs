@@ -8,9 +8,14 @@ public class FloodFade : MonoBehaviour {
 	public Text counterText;
 	private float timeLeftToFlood;
 	private bool isTimerActivated = false;
+	private bool isPaused = true;
 
 	public void activateTimer() {
 		isTimerActivated = true;
+	}
+
+	public void setPause(bool status) {
+		isPaused = status;
 	}
 
 	// Use this for initialization
@@ -22,7 +27,10 @@ public class FloodFade : MonoBehaviour {
 
 	void FixedUpdate () {
 		if (isTimerActivated) {
-			timeLeftToFlood -= Time.deltaTime;
+			if (!isPaused) {
+				timeLeftToFlood -= Time.deltaTime;
+			}
+
 			if (timeLeftToFlood < 0) {
 					timeLeftToFlood = 0;
 			}
