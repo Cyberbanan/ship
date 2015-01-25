@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class EnemyMovement : MonoBehaviour {
 
-	private const float MAX_ROTSPEED_PER_SEC = 1000.0f;
+	private const float MAX_ROTSPEED_PER_SEC = 60.0f;
 	private const float ROTATE_OFFSET = -75.0f;
+	public const float distToTriggerRotate = 2.5f;
 
 	// Enemy movement
 	private Player targetPlayer;
@@ -59,8 +60,14 @@ public class EnemyMovement : MonoBehaviour {
 						}
 
 			*/
-			// Rotate towards character
+
+			// if we're close to the player, rotate to show the mouth #creepy
 			Vector3 inputDir = directionToTarget;
+			float currentDistanceFromTarget = vectorToTarget.magnitude;
+			if (currentDistanceFromTarget > distToTriggerRotate || pm.isInGlow()) {
+				// if we're far from the player, rotate to hide the mouth #creepy
+				inputDir = directionToTarget * -1;
+			}
 			float angleY = Mathf.Atan2(-inputDir.x, -inputDir.z) * Mathf.Rad2Deg + ROTATE_OFFSET;
 			transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(90.0f, angleY, 0.0f), MAX_ROTSPEED_PER_SEC * Time.fixedDeltaTime);
 		}
