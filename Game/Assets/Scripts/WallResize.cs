@@ -121,8 +121,6 @@ public class WallResize : MonoBehaviour {
 			case WallState.Shrinking:
 				break;
 			}
-
-			//Debug.Log(currentScale);
 		}
 
 		if(scaleChangedThisFrame)

@@ -34,6 +34,8 @@ public class Player : MonoBehaviour {
 	{
 		currentLevel++;
 		GetComponent<SpriteRenderer>().sprite = sprites[currentLevel];
+
+		MusicManager.main.NextLevel();
 	}
 	
 	public void PrevLevel()
