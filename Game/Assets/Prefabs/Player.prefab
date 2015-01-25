@@ -12,6 +12,7 @@ GameObject:
   - 54: {fileID: 5497662}
   - 114: {fileID: 11497662}
   - 136: {fileID: 13605590}
+  - 81: {fileID: 8172906}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -46,6 +47,13 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
+--- !u!81 &8172906
+AudioListener:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197662}
+  m_Enabled: 1
 --- !u!114 &11497662
 MonoBehaviour:
   m_ObjectHideFlags: 1
