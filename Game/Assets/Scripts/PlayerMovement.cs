@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float maxSpeed = 1.0f;
 	private float maxSpeedSqr;
 	private bool dead = false;
+	private bool isSafe = false;
 
 	private FloodFade floodFade = null;
 
@@ -33,13 +34,20 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		}
 
-		activateFloods();
+		//activateFloods();
 	}
 
 	public void Die()
 	{
 		Debug.Log ("DEATH");
+		ScreenFade.main.FadeToBlack();
+		ScreenFade.main.RestartNext();
 		dead = true;
+	}
+
+	public void Revive()
+	{
+		dead = false;
 	}
 	
 	private void HandleInput()
@@ -85,6 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				floodFade.setPause(true);
 			}
+			isSafe = true;
 		}
 	}
 
@@ -95,6 +104,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				floodFade.setPause(false);
 			}
+			isSafe = false;
 		}
 	}
 	
@@ -109,5 +119,9 @@ public class PlayerMovement : MonoBehaviour {
 				floodFade.activateTimer();
 			}
 		}
+	}
+
+	public bool isInGlow() {
+		return isSafe;
 	}
 }

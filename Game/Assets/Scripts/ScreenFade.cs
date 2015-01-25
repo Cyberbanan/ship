@@ -28,12 +28,20 @@ public class ScreenFade : MonoBehaviour {
 
 	private Image image;
 
+	private bool restartNext = false;
+	private bool nextLevelNext = false;
+	private bool creditsNext = false;
+	private bool titleNext = false;
+
 	void Awake()
 	{
 		if(instance == null)
 		{
 			instance = this;
 			image = GetComponent<Image>();
+
+			SetColor(Color.black);
+			FadeToClear();
 		}
 		else
 		{
@@ -57,6 +65,31 @@ public class ScreenFade : MonoBehaviour {
 			{
 				image.color = targetColor;
 				state = FadeState.Visible;
+
+				if(nextLevelNext)
+				{
+					nextLevelNext = false;
+					Player.main.NextLevel();
+					FadeToClear();
+				}
+				else if(restartNext)
+				{
+					restartNext = false;
+					Player.main.Restart();
+					FadeToClear();
+				}
+				else if(creditsNext)
+				{
+					creditsNext = false;
+					Application.LoadLevel("CreditsScreen");
+					FadeToClear();
+				}
+				else if(titleNext)
+				{
+					titleNext = false;
+					Application.LoadLevel("TitleScreen");
+					FadeToClear();
+				}
 			}
 
 			break;
@@ -73,6 +106,31 @@ public class ScreenFade : MonoBehaviour {
 			{
 				image.color = targetColor;
 				state = FadeState.Visible;
+
+				if(nextLevelNext)
+				{
+					nextLevelNext = false;
+					Player.main.NextLevel();
+					FadeToClear();
+				}
+				else if(restartNext)
+				{
+					restartNext = false;
+					Player.main.Restart();
+					FadeToClear();
+				}
+				else if(creditsNext)
+				{
+					creditsNext = false;
+					Application.LoadLevel("CreditsScreen");
+					FadeToClear();
+				}
+				else if(titleNext)
+				{
+					titleNext = false;
+					Application.LoadLevel("TitleScreen");
+					FadeToClear();
+				}
 			}
 
 			break;
@@ -89,6 +147,23 @@ public class ScreenFade : MonoBehaviour {
 			{
 				image.color = targetColor;
 				state = FadeState.Visible;
+
+				if(nextLevelNext)
+				{
+					nextLevelNext = false;
+				}
+				else if(restartNext)
+				{
+					restartNext = false;
+				}
+				else if(creditsNext)
+				{
+					creditsNext = false;
+				}
+				else if(titleNext)
+				{
+					titleNext = false;
+				}
 			}
             
         	break;
@@ -113,9 +188,46 @@ public class ScreenFade : MonoBehaviour {
 
 	public void FadeToClear(float fadeDuration = 2.0f)
 	{
-		timer = fadeDuration;
+		timer = 0.0f;
 		state = FadeState.FadingToClear;
 		prevColor = new Color(image.color.r, image.color.g, image.color.b, image.color.a);
 		targetColor = new Color(prevColor.r, prevColor.g, prevColor.b, 0.0f);
+	}
+
+	public void SetColor(Color c)
+	{
+		image.color = c;
+	}
+
+	public void RestartNext()
+	{
+		restartNext = true;
+		nextLevelNext = false;
+		creditsNext = false;
+		titleNext = false;
+	}
+
+	public void NextLevelNext()
+	{
+		restartNext = false;
+		nextLevelNext = true;
+		creditsNext = false;
+		titleNext = false;
+	}
+
+	public void CreditsNext()
+	{
+		restartNext = false;
+		nextLevelNext = false;
+		creditsNext = true;
+		titleNext = false;
+	}
+
+	public void TitleNext()
+	{
+		restartNext = false;
+		nextLevelNext = false;
+		creditsNext = false;
+		titleNext = true;
 	}
 }
