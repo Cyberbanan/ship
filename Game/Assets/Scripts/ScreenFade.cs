@@ -81,7 +81,7 @@ public class ScreenFade : MonoBehaviour {
 				else if(creditsNext)
 				{
 					creditsNext = false;
-					Application.LoadLevel("CreditsScreen");
+					Application.LoadLevel("DadHugCutscene");
 					FadeToClear();
 				}
 				else if(titleNext)
@@ -122,7 +122,7 @@ public class ScreenFade : MonoBehaviour {
 				else if(creditsNext)
 				{
 					creditsNext = false;
-					Application.LoadLevel("CreditsScreen");
+					Application.LoadLevel("DadHugCutscene");
 					FadeToClear();
 				}
 				else if(titleNext)

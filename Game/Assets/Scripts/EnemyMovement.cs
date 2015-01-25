@@ -8,18 +8,25 @@ public class EnemyMovement : MonoBehaviour {
 	private const float ROTATE_OFFSET = -75.0f;
 	public const float distToTriggerRotate = 2.5f;
 
+	// Default Locations
+	public Vector3 level1Position = new Vector3(-37.82f, 0.0f, 11.0f);
+	public Vector3 level2Position = new Vector3(27.94f, 0.0f, 21.09f);
+	public Vector3 level3Position = new Vector3(21.01f, 0.0f, -36.68f);
+
 	// Enemy movement
 	private Player targetPlayer;
 	private GameObject targetObject;
 	private PlayerMovement pm;
 	public float randomizedMovementFrequency = 0.01f;
 	private float accelerationAmount = 1.0f;
+	private int playerLastLevel = 1;	
 
 	// Activation variables
 	public bool activeByDefault = false;
 	private bool isActive;
 	public float distToActivate = 1.0f;
-	public float activationDelay = 1.0f;
+	public float activationDelayStart = 1.0f;
+	private float activationDelay;
 
 	// if the max distance is too far from the player
 	// Need this because even if you're close, if you're stuck we
@@ -29,6 +36,7 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Awake() {
 		isActive = activeByDefault;
+		activationDelay = activationDelayStart;
 	}
 
 	void Start() {
@@ -42,6 +50,13 @@ public class EnemyMovement : MonoBehaviour {
 		if (targetObject == null) {
 			return;
 		}
+
+		// check for level transitions
+		if (playerLastLevel != targetPlayer.currentLevel) {
+			// transition!
+			resetToLevel(targetPlayer.currentLevel);
+		}
+		playerLastLevel = targetPlayer.currentLevel;
 
 		// if you're not active, stay rotated away from player. Activate when they get close.
 		if (!isActive) {
@@ -107,6 +122,25 @@ public class EnemyMovement : MonoBehaviour {
 		} else {
 			rotateTowardsTarget(true);
 		}
+
+	}
+
+	void resetToLevel(int level) {
+		switch (level) {
+		case 0:
+			transform.position = level1Position;
+			break;
+		case 1:
+			transform.position = level2Position;
+			break;
+		case 2:
+			transform.position = level3Position;
+			break;
+		default:
+			break;
+		}
+		isActive = false;
+		activationDelay = activationDelayStart;
 	}
 
 	float distToTarget() {
