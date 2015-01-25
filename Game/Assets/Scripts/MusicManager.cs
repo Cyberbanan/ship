@@ -78,14 +78,14 @@ public class MusicManager : MonoBehaviour {
 			break;
 		case FadeState.GoToLevel3:
 			timer += Time.deltaTime;
-			
+
 			if(timer < crossfadeDuration)
 			{
-				source2.volume = timer / crossfadeDuration;
+				source1.volume = timer / crossfadeDuration;
 			}
 	        else
 	        {
-	            source2.volume = 1.0f;
+	            source1.volume = 1.0f;
 	            timer = 0.0f;
 				state = FadeState.None;
 	        }
@@ -114,6 +114,7 @@ public class MusicManager : MonoBehaviour {
 		source2.clip = tracks[1];
 		source2.volume = 0.0f;
 		source2.Play();
+		state = FadeState.GoToLevel2;
 	}
 
 	private void GoToLevel3()
@@ -122,5 +123,7 @@ public class MusicManager : MonoBehaviour {
 		source1.clip = tracks[2];
 		source1.volume = 0.0f;
 		source1.Play();
+		source1.timeSamples = source2.timeSamples;
+		state = FadeState.GoToLevel3;
 	}
 }
