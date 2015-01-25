@@ -20,24 +20,29 @@ public class EnemyMovement : MonoBehaviour {
 	public float maxDistanceFromTarget = 4.0f;
 	public float teleportDistance = 0.1f;
 
-	// respawn flags
+	// setting water collision flags
+	/*
+    // respawn flags
 	public float teleportToWaterMaxDistance = 3.0f;
 	public float teleportToWaterMinDistance = 1.0f;
 	public float respawnTimeoutMax = 0.1f;
 	private float respawnTimeout;
-
-	// setting water collision flags
+	
 	private bool isActive;
 	private float waterTriggerTimeout;
 	private float waterTriggerTimeoutMax = 0.05f;
+	*/
 	
 	void Awake() {
 		maxSpeedSqr = maxSpeed * maxSpeed;
+		/*
 		isActive = true;
 		waterTriggerTimeout = waterTriggerTimeoutMax;
+		*/
 	}
 	
 	void FixedUpdate() {
+		/*
 		waterTriggerTimeout -= Time.deltaTime;
 		respawnTimeout -= Time.deltaTime;
 
@@ -45,8 +50,12 @@ public class EnemyMovement : MonoBehaviour {
 			// need && isActive otherwise it'll keep calling setActive(false) repeatedly
 			setActive(false);
 		}
+		*/
 
+		/*
 		if (isActive) {
+		*/
+
 			// Calculate out movement
 			Vector3 directionToTravel = new Vector3 (0.0f, 0.0f, 0.0f);
 			Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
@@ -79,6 +88,7 @@ public class EnemyMovement : MonoBehaviour {
 			if (rigidbody.velocity.sqrMagnitude > maxSpeedSqr) {
 				rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 			}
+		/*
 		} else {
 			// Respawn
 			if (respawnTimeout < 0) {
@@ -88,6 +98,7 @@ public class EnemyMovement : MonoBehaviour {
 				}
 			}
 		}
+		*/
 	}
 
 	/**
@@ -124,6 +135,7 @@ public class EnemyMovement : MonoBehaviour {
 	/**
 	 * Returns a water tile that is <= radius and >= min distance
 	 * */
+	/*
 	Collider RandomNearbyWater(Vector3 center, float maxRadius, float minRadius) {
 		Collider[] hitColliders = Physics.OverlapSphere(center, maxRadius);
 		List<Collider> waterColliders = new List<Collider>();
@@ -140,16 +152,20 @@ public class EnemyMovement : MonoBehaviour {
 			return null;
 		}
 	}
+	*/
 
 	/**
 	 * Water detection and only being active when on water
 	 * */
+	/*
 	void OnTriggerStay(Collider other) {
 		if (other.gameObject.tag == "Water") {
 			setActive(true);
 		}
 	}
+	*/
 
+	/*
 	void setActive(bool status) {
 		print ("setActive(" + status + ")");
 		isActive = status;
@@ -160,5 +176,6 @@ public class EnemyMovement : MonoBehaviour {
 			waterTriggerTimeout = waterTriggerTimeoutMax;
 		}
 	}
+	*/
 	
 }

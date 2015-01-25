@@ -19,12 +19,18 @@ public class FloodFade : MonoBehaviour {
 		// Set the alpha depending on how much time is left.
 		float timePassed = timeToFlood - timeLeftToFlood;
 		float opacity = (timePassed / timeToFlood);
-
 		counterText.text = (opacity*100) + "%";
 
-		opacity = opacity * 0.5f;
-		print (opacity);
+		float scaledOpacity = 0.0f;
+		if (opacity >= 0.6f && opacity < 0.8f) {
+			scaledOpacity = 0.6f;
+		} else if (opacity >= 0.8f && opacity < 1) {
+			scaledOpacity = 0.8f;
+		} else if (opacity >= 1) {
+			scaledOpacity = 1.0f;
+		}
 
-		renderer.material.SetColor ("_TintColor", new Color(0.5f, 0.5f, 0.5f, opacity));
+		scaledOpacity = scaledOpacity * 0.5f;
+		renderer.material.SetColor ("_TintColor", new Color(0.5f, 0.5f, 0.5f, scaledOpacity));
 	}
 }
