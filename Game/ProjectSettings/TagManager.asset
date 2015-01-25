@@ -8,8 +8,9 @@ TagManager:
   - Door
   - MemoryObject
   - Lifeboat
-  - 
+  - Water
   - SafeZone
+  - Wall
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX

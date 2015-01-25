@@ -11,9 +11,9 @@ GameObject:
   - 212: {fileID: 21255222}
   - 65: {fileID: 6548310}
   - 114: {fileID: 11400000}
-  m_Layer: 0
+  m_Layer: 4
   m_Name: Water
-  m_TagString: Untagged
+  m_TagString: Water
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
