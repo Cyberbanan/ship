@@ -33,13 +33,20 @@ public class PlayerMovement : MonoBehaviour {
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		}
 
-		activateFloods();
+		//activateFloods();
 	}
 
 	public void Die()
 	{
 		Debug.Log ("DEATH");
+		ScreenFade.main.FadeToBlack();
+		ScreenFade.main.RestartNext();
 		dead = true;
+	}
+
+	public void Revive()
+	{
+		dead = false;
 	}
 	
 	private void HandleInput()
