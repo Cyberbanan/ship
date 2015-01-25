@@ -371,7 +371,8 @@ MonoBehaviour:
   activeByDefault: 0
   distToActivate: 1
   activationDelay: 1
-  maxDistanceFromTarget: 3.5
+  maxDistanceFromTarget: 5
+  teleportDistanceFromTarget: 4
 --- !u!135 &13503628
 SphereCollider:
   m_ObjectHideFlags: 1
