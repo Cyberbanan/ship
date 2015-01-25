@@ -12,7 +12,9 @@ public class Player : MonoBehaviour {
 	}
 
 	public List<Sprite> sprites = new List<Sprite>();
-	
+
+	public List<Transform> startingPoints = new List<Transform>();
+
 	[System.NonSerialized]
 	public int currentLevel = 0;
 
@@ -38,5 +40,11 @@ public class Player : MonoBehaviour {
 	{
 		currentLevel--;
 		GetComponent<SpriteRenderer>().sprite = sprites[currentLevel];
+	}
+
+	public void Restart()
+	{
+		transform.position = startingPoints[currentLevel].position;
+		GetComponent<PlayerMovement>().Revive();
 	}
 }
