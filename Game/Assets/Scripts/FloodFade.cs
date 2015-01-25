@@ -12,6 +12,7 @@ public class FloodFade : MonoBehaviour {
 
 	public void activateTimer() {
 		isTimerActivated = true;
+		isPaused = false;
 	}
 
 	public void setPause(bool status) {
