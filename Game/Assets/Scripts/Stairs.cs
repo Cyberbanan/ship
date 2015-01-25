@@ -9,6 +9,9 @@ public class Stairs : MonoBehaviour {
 	{
 		if(col.gameObject.tag == "Player")
 		{
+			//ScreenFade.main.FadeToBlack();
+			//ScreenFade.main.NextLevelNext();
+
 			// Teleport to next area
 			col.gameObject.transform.position = targetTeleport.transform.position;
 

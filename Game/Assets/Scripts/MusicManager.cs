@@ -72,6 +72,7 @@ public class MusicManager : MonoBehaviour {
 				source1.volume = 0.0f;
 				source1.Stop();
 				timer = 0.0f;
+				state = FadeState.None;
 			}
 
 			break;
@@ -86,6 +87,7 @@ public class MusicManager : MonoBehaviour {
 	        {
 	            source2.volume = 1.0f;
 	            timer = 0.0f;
+				state = FadeState.None;
 	        }
 
 			break;
@@ -106,7 +108,7 @@ public class MusicManager : MonoBehaviour {
 		}
 	}
 
-	public void GoToLevel2()
+	private void GoToLevel2()
 	{
 		timer = 0.0f;
 		source2.clip = tracks[1];
@@ -114,7 +116,7 @@ public class MusicManager : MonoBehaviour {
 		source2.Play();
 	}
 
-	public void GoToLevel3()
+	private void GoToLevel3()
 	{
 		timer = 0.0f;
 		source1.clip = tracks[2];
