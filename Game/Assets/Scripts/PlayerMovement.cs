@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour {
 	private float maxSpeedSqr;
 	private bool dead = false;
 
+	private FloodFade floodFade = null;
+
 	private Vector2 inputDir = Vector2.zero;
 
 	void Awake()
@@ -76,6 +78,26 @@ public class PlayerMovement : MonoBehaviour {
 		}
 	}
 
+	void OnTriggerStay(Collider other) {
+		if (other.gameObject.tag == "Glow")
+		{
+			if (floodFade != null)
+			{
+				floodFade.setPause(true);
+			}
+		}
+	}
+
+	void OnTriggerExit(Collider other) {
+		if (other.gameObject.tag == "Glow")
+		{
+			if (floodFade != null)
+			{
+				floodFade.setPause(false);
+			}
+		}
+	}
+	
 	void activateFloods()
 	{
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.0f);
@@ -83,8 +105,8 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			if (hit.gameObject.tag == "WaterTiled")
 			{
-				FloodFade ff = (FloodFade) hit.gameObject.GetComponent(typeof(FloodFade));
-				ff.activateTimer();
+				floodFade = (FloodFade) hit.gameObject.GetComponent(typeof(FloodFade));
+				floodFade.activateTimer();
 			}
 		}
 	}
