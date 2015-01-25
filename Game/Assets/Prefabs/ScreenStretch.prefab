@@ -26,6 +26,7 @@ GameObject:
   - 224: {fileID: 22436616}
   - 222: {fileID: 22236614}
   - 114: {fileID: 11436616}
+  - 114: {fileID: 11467534}
   m_Layer: 5
   m_Name: ScreenFade
   m_TagString: Untagged
@@ -58,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -67,6 +68,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &11467534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 220bc1aedf60b4a3a9d7f0c10382c7b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!222 &22236614
 CanvasRenderer:
   m_ObjectHideFlags: 1

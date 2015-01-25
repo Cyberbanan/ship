@@ -11,8 +11,8 @@ GameObject:
   - 33: {fileID: 3335140}
   - 23: {fileID: 2335140}
   m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  m_Name: BottomPlane
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,9 +27,11 @@ GameObject:
   - 4: {fileID: 492746}
   - 33: {fileID: 3392746}
   - 23: {fileID: 2392746}
-  m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
+  - 135: {fileID: 13503628}
+  - 114: {fileID: 11432376}
+  m_Layer: 8
+  m_Name: Tube
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +51,7 @@ GameObject:
   - 82: {fileID: 8238100}
   m_Layer: 8
   m_Name: Shadow
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -229,6 +231,17 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &11432376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192746}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18ff37c9baf92493299a4a74f8ce128e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11494668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -245,6 +258,18 @@ MonoBehaviour:
   randomizedMovementFrequency: .300000012
   maxDistanceFromTarget: 3.5
   teleportDistance: .200000003
+--- !u!135 &13503628
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192746}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .125
+  m_Center: {x: 0, y: -1.125, z: 0}
 --- !u!136 &13694668
 CapsuleCollider:
   m_ObjectHideFlags: 1

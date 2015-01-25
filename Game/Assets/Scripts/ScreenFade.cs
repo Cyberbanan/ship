@@ -40,21 +40,48 @@ public class ScreenFade : MonoBehaviour {
 		case FadeState.FadingToBlack:
 			timer += Time.deltaTime;
 
-			float alpha = 
+			if(timer < duration)
+			{
+				float t = timer / duration;
+				image.color = Color.Lerp(prevColor, targetColor, t);
+			}
+			else
+			{
+				image.color = targetColor;
+				state = FadeState.Visible;
+			}
 
 			break;
 
 		case FadeState.FadingToWhite:
 			timer += Time.deltaTime;
 
-
+			if(timer < duration)
+			{
+				float t = timer / duration;
+				image.color = Color.Lerp(prevColor, targetColor, t);
+			}
+			else
+			{
+				image.color = targetColor;
+				state = FadeState.Visible;
+			}
 
 			break;
 
 		case FadeState.FadingToClear:
 			timer += Time.deltaTime;
             
-            
+			if(timer < duration)
+			{
+				float t = timer / duration;
+				image.color = Color.Lerp(prevColor, targetColor, t);
+			}
+			else
+			{
+				image.color = targetColor;
+				state = FadeState.Visible;
+			}
             
         	break;
 		}
