@@ -90,7 +90,12 @@ public class EnemyMovement : MonoBehaviour {
 				s.mute = true;
 			}
 			// move self far away since we can't do rgba
-			resetPositionOnlyWithLevel(targetPlayer.currentLevel);
+			Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
+			Vector3 directionToTarget = -1 * vectorToTarget.normalized;
+			Debug.DrawRay (transform.position, directionToTarget * 2, Color.green);
+			Vector3 acceleration = new Vector3 (directionToTarget.x * accelerationAmount, 0.0f, directionToTarget.z * accelerationAmount);
+			rigidbody.AddForce (acceleration, ForceMode.Impulse);
+			return;
 		}
 
 		foreach(AudioSource s in GetComponents<AudioSource>())
