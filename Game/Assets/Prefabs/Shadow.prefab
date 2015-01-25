@@ -46,6 +46,7 @@ GameObject:
   - 54: {fileID: 5494668}
   - 114: {fileID: 11494668}
   - 136: {fileID: 13694668}
+  - 82: {fileID: 8238100}
   m_Layer: 8
   m_Name: Shadow
   m_TagString: Untagged
@@ -160,6 +161,74 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 116
   m_CollisionDetection: 1
+--- !u!82 &8238100
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194668}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: 329df82a25ac247a8bb46a0279fe67e1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 2
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: .200000003
+      value: 1
+      inSlope: -5.00199175
+      outSlope: -5.00199175
+      tangentMode: 0
+    - time: .416853935
+      value: .318181813
+      inSlope: -1.25049794
+      outSlope: -1.25049794
+      tangentMode: 0
+    - time: .738202274
+      value: .0227272734
+      inSlope: -.503116846
+      outSlope: -.503116846
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11494668
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -172,13 +241,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObject: {fileID: 0}
-  maxSpeed: .5
+  maxSpeed: .300000012
   randomizedMovementFrequency: .300000012
-  maxDistanceFromTarget: 4
-  teleportDistance: .100000001
-  teleportToWaterMaxDistance: 3
-  teleportToWaterMinDistance: 1
-  respawnTimeoutMax: .100000001
+  maxDistanceFromTarget: 3.5
+  teleportDistance: .200000003
 --- !u!136 &13694668
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -186,7 +252,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194668}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: .159999996
   m_Height: .319999963

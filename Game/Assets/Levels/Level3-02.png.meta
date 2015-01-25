@@ -1,11 +1,27 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: d810a1fd0a3764748a2715bbf72cdf33
+=======
+<<<<<<< HEAD
+guid: 9169b2a9204dc4ce4ab071ac6f102e1a
+=======
+guid: c484f50a940c25a429588fe5024e764e
+>>>>>>> 6d06e38811062cda351adb134d97e217860d8097
+>>>>>>> 51571f7ff232d21a39bb6b44e5d9b4a3515a6e2e
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
+<<<<<<< HEAD
     enableMipMap: 1
+=======
+<<<<<<< HEAD
+    enableMipMap: 1
+=======
+    enableMipMap: 0
+>>>>>>> 6d06e38811062cda351adb134d97e217860d8097
+>>>>>>> 51571f7ff232d21a39bb6b44e5d9b4a3515a6e2e
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -17,6 +33,10 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: .25
     normalMapFilter: 0
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> 51571f7ff232d21a39bb6b44e5d9b4a3515a6e2e
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
@@ -25,6 +45,19 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
+<<<<<<< HEAD
+=======
+=======
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: 4
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 0
+>>>>>>> 6d06e38811062cda351adb134d97e217860d8097
+>>>>>>> 51571f7ff232d21a39bb6b44e5d9b4a3515a6e2e
     aniso: -1
     mipBias: -1
     wrapMode: -1
@@ -39,7 +72,15 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
+<<<<<<< HEAD
   textureType: -1
+=======
+<<<<<<< HEAD
+  textureType: -1
+=======
+  textureType: 5
+>>>>>>> 6d06e38811062cda351adb134d97e217860d8097
+>>>>>>> 51571f7ff232d21a39bb6b44e5d9b4a3515a6e2e
   buildTargetSettings: []
   spriteSheet:
     sprites: []
