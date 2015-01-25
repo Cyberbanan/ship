@@ -43,7 +43,9 @@ public class FloodFade : MonoBehaviour {
 			}
 
 			if (timeLeftToFlood < 0) {
-					timeLeftToFlood = 0;
+				timeLeftToFlood = 0;
+				Player.main.GetComponent<PlayerMovement>().Die();
+				restart ();
 			}
 
 			int minutes = (int)(Mathf.Floor (timeLeftToFlood / 60.0f));
