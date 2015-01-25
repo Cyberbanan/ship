@@ -116,8 +116,14 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			if (hit.gameObject.tag == "WaterTiled")
 			{
-				floodFade = (FloodFade) hit.gameObject.GetComponent(typeof(FloodFade));
-				floodFade.activateTimer();
+				FloodFade newFloodFade = (FloodFade) hit.gameObject.GetComponent(typeof(FloodFade));
+				if (newFloodFade != floodFade) {
+					floodFade.restart();
+					floodFade.deactivateTimer();
+
+					newFloodFade.activateTimer();
+					floodFade = newFloodFade;
+				}
 			}
 		}
 	}
