@@ -11,6 +11,8 @@ public class Stairs : MonoBehaviour {
 		{
 			// Teleport to next area
 			col.gameObject.transform.position = targetTeleport.transform.position;
+
+			Player.main.NextLevel();
 		}
 	}
 }

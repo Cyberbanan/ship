@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 421354}
   - 212: {fileID: 21221354}
   - 135: {fileID: 13521356}
+  - 114: {fileID: 11496072}
   m_Layer: 10
   m_Name: MemoryObject
   m_TagString: SafeZone
@@ -41,7 +42,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 121354}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 5.94999981, y: -0, z: 8.43000031}
+  m_LocalPosition: {x: 1.19640636, y: 36.2578125, z: 9.2534771}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 421356}
@@ -59,6 +60,26 @@ Transform:
   m_Children: []
   m_Father: {fileID: 421354}
   m_RootOrder: 0
+--- !u!114 &11496072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 121354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b49bf52e2962f45c3909c270ab8276f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 4fa35aad61ee749a6b7cb1e6571eb7bd, type: 3}
+  - {fileID: 21300000, guid: 8c7d768444f5b44c08c91ac2694f2d0a, type: 3}
+  - {fileID: 21300000, guid: 85fc7adacaca0492e983210752f67c6d, type: 3}
+  - {fileID: 21300000, guid: ca50a64b83c8f4a6a8381ae4ddd0e107, type: 3}
+  - {fileID: 21300000, guid: 8dad5b49bbacb43789f66e8a2ef18c25, type: 3}
+  - {fileID: 21300000, guid: 6abc221f8f5c6434e9b955a79d562082, type: 3}
+  - {fileID: 21300000, guid: 5879d3bcadaf2479880d345220844c62, type: 3}
+  - {fileID: 21300000, guid: 90975d70c7bfa4858a7f8b8c33f504ae, type: 3}
 --- !u!135 &13521354
 SphereCollider:
   m_ObjectHideFlags: 1

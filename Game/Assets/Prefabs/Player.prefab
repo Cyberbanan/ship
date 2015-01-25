@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11497662}
   - 136: {fileID: 13605590}
   - 81: {fileID: 8172906}
+  - 114: {fileID: 11402234}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197662}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: 2.18000007, y: 0, z: 9.11999989}
+  m_LocalPosition: {x: -28.6000004, y: 0, z: 15.1000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -54,6 +55,21 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 197662}
   m_Enabled: 1
+--- !u!114 &11402234
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9d8c90bd19dd492bb869d43f6dc1f00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: 21300000, guid: 371b12af5382843d4a93410d69a1313b, type: 3}
+  - {fileID: 21300000, guid: 88782d88d1e3448329c7ebce0a7430f8, type: 3}
+  - {fileID: 21300000, guid: 6a8b983037bbc479ea879a16b14d6df2, type: 3}
 --- !u!114 &11497662
 MonoBehaviour:
   m_ObjectHideFlags: 1

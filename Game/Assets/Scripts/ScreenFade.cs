@@ -30,7 +30,15 @@ public class ScreenFade : MonoBehaviour {
 
 	void Awake()
 	{
-		image = GetComponent<Image>();
+		if(instance == null)
+		{
+			instance = this;
+			image = GetComponent<Image>();
+		}
+		else
+		{
+			Destroy(this);
+		}
 	}
 
 	void Update()
