@@ -25,6 +25,7 @@ public class EnemyMovement : MonoBehaviour {
 	// Need this because even if you're close, if you're stuck we
 	// want you to teleport toward the player
 	public float maxDistanceFromTarget = 5.0f;
+	public float teleportDistanceFromTarget = 4.0f;
 
 	void Awake() {
 		isActive = activeByDefault;
@@ -84,7 +85,7 @@ public class EnemyMovement : MonoBehaviour {
 				float targetX = (Random.value - 0.5f) * maxDistanceFromTarget;
 
 				// get a y distance such that you are maxDistanceFromTarget/2 away
-				float targetDistance = maxDistanceFromTarget/2;
+				float targetDistance = teleportDistanceFromTarget;
 				float targetDistanceSq = targetDistance * targetDistance;
 				float targetZ = Mathf.Sqrt( targetDistanceSq - targetX * targetX);
 				if (Random.value > 0.5) {
