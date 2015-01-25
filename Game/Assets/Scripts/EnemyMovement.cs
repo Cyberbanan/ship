@@ -24,7 +24,7 @@ public class EnemyMovement : MonoBehaviour {
 	// if the max distance is too far from the player
 	// Need this because even if you're close, if you're stuck we
 	// want you to teleport toward the player
-	public float maxDistanceFromTarget = 4.0f;
+	public float maxDistanceFromTarget = 5.0f;
 
 	void Awake() {
 		isActive = activeByDefault;
@@ -37,6 +37,7 @@ public class EnemyMovement : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
+
 		if (targetObject == null) {
 			return;
 		}
@@ -76,6 +77,26 @@ public class EnemyMovement : MonoBehaviour {
 			Debug.DrawRay (transform.position, directionToTarget * 2, Color.white);
 			Vector3 acceleration = new Vector3 (directionToTarget.x * accelerationAmount, 0.0f, directionToTarget.z * accelerationAmount);
 			rigidbody.AddForce (acceleration, ForceMode.Impulse);
+
+			// if we're really far from the player, teleport closer
+			if (distToTarget() > maxDistanceFromTarget) {
+				// pick a random X near the user.
+				float targetX = (Random.value - 0.5f) * maxDistanceFromTarget;
+
+				// get a y distance such that you are maxDistanceFromTarget/2 away
+				float targetDistance = maxDistanceFromTarget/2;
+				float targetDistanceSq = targetDistance * targetDistance;
+				float targetZ = Mathf.Sqrt( targetDistanceSq - targetX * targetX);
+				if (Random.value > 0.5) {
+					targetZ = targetZ * -1;
+				}
+
+				float newX = targetX + targetObject.transform.position.x;
+				float newZ = targetZ + targetObject.transform.position.z;
+
+				transform.position = new Vector3(newX, 0.0f, newZ);
+			}
+
 		}
 
 		// if we're close to the player, rotate to show the mouth #creepy
