@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float maxSpeedSqr;
 	private bool dead = false;
 	private bool isSafe = false;
+	private bool noInput = false;
 
 	public FloodFade floodFade = null;
 
@@ -27,7 +28,10 @@ public class PlayerMovement : MonoBehaviour {
 
 	void FixedUpdate()
 	{
-		HandleInput();
+		if(!noInput)
+		{
+			HandleInput();
+		}
 
 		if(rigidbody.velocity.sqrMagnitude > maxSpeedSqr)
 		{
