@@ -4,33 +4,54 @@ using System.Collections;
 
 public class FloodFade : MonoBehaviour {
 
-	public float timeToFlood = 120.0f;
+	public float timeToFlood = 60.0f;
 	public Text counterText;
 	private float timeLeftToFlood;
+	private bool isTimerActivated = false;
+
+	public void activateTimer() {
+		isTimerActivated = true;
+	}
 
 	// Use this for initialization
 	void Start () {
 		timeLeftToFlood = timeToFlood;
+		renderer.material.SetColor ("_TintColor", new Color (0.5f, 0.5f, 0.5f, 0.0f));
+		//gameObject.SetActive (false);
 	}
 
 	void FixedUpdate () {
-		timeLeftToFlood -= Time.deltaTime;
+		if (isTimerActivated) {
+			timeLeftToFlood -= Time.deltaTime;
+			if (timeLeftToFlood < 0) {
+					timeLeftToFlood = 0;
+			}
 
-		// Set the alpha depending on how much time is left.
-		float timePassed = timeToFlood - timeLeftToFlood;
-		float opacity = (timePassed / timeToFlood);
-		counterText.text = (opacity*100) + "%";
+			int minutes = (int)(Mathf.Floor (timeLeftToFlood / 60.0f));
+			int seconds = (int)(timeLeftToFlood % 60.0f);
+			string secondsStr = "";
+			if (seconds < 10) {
+					secondsStr += "0";
+			}
+			secondsStr += seconds;
+			counterText.text = minutes + ":" + secondsStr;
 
-		float scaledOpacity = 0.0f;
-		if (opacity >= 0.6f && opacity < 0.8f) {
-			scaledOpacity = 0.6f;
-		} else if (opacity >= 0.8f && opacity < 1) {
-			scaledOpacity = 0.8f;
-		} else if (opacity >= 1) {
-			scaledOpacity = 1.0f;
+
+			// Set the alpha depending on how much time is left.
+			float timePassed = timeToFlood - timeLeftToFlood;
+			float opacity = (timePassed / timeToFlood);
+
+			float scaledOpacity = 0.0f;
+			if (opacity >= 0.6f && opacity < 0.8f) {
+					scaledOpacity = 0.6f;
+			} else if (opacity >= 0.8f && opacity < 1) {
+					scaledOpacity = 0.8f;
+			} else if (opacity >= 1) {
+					scaledOpacity = 1.0f;
+			}
+
+			scaledOpacity = scaledOpacity * 0.5f;
+			renderer.material.SetColor ("_TintColor", new Color (0.5f, 0.5f, 0.5f, scaledOpacity));
 		}
-
-		scaledOpacity = scaledOpacity * 0.5f;
-		renderer.material.SetColor ("_TintColor", new Color(0.5f, 0.5f, 0.5f, scaledOpacity));
 	}
 }

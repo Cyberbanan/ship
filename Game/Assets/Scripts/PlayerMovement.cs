@@ -30,6 +30,8 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			rigidbody.velocity = rigidbody.velocity.normalized * maxSpeed;
 		}
+
+		activateFloods();
 	}
 
 	public void Die()
@@ -71,6 +73,20 @@ public class PlayerMovement : MonoBehaviour {
 		else
 		{
 			rigidbody.velocity = Vector3.zero;
+		}
+	}
+
+	void activateFloods()
+	{
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1.0f);
+		foreach (Collider hit in hitColliders)
+		{
+			print (hit.gameObject.name);
+			if (hit.gameObject.tag == "WaterTiled")
+			{
+				FloodFade ff = (FloodFade) hit.gameObject.GetComponent(typeof(FloodFade));
+				ff.activateTimer();
+			}
 		}
 	}
 }
