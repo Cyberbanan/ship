@@ -6,7 +6,7 @@ public class FloodFade : MonoBehaviour {
 
 	public float timeToFlood = 60.0f;
 	public Text counterText;
-	private float timeLeftToFlood;
+	public float timeLeftToFlood;
 	private bool isTimerActivated = false;
 	private bool isPaused = true;
 

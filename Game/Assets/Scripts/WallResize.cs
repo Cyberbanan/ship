@@ -47,7 +47,7 @@ public class WallResize : MonoBehaviour {
 			{
 			case WallState.Growing:
 
-				float levelTime = Player.main.GetComponent<PlayerMovement>().floodFade.timeToFlood;
+				float levelTime = Player.main.GetComponent<PlayerMovement>().floodFade.timeLeftToFlood;
 
 				if(levelTime <= 30.0f)
 				{
