@@ -3,6 +3,8 @@ using System.Collections;
 
 public class DadTrigger : MonoBehaviour {
 
+	public GameObject Shadow;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -17,7 +19,7 @@ public class DadTrigger : MonoBehaviour {
 		if (other.tag == "Player")
 		{
 			// Aww... how sweet. You win! Hug! Hug! Hug!
-
+			Shadow.SetActive(false);
 			ScreenFade.main.FadeToWhite();
 			ScreenFade.main.CreditsNext();
 		}
