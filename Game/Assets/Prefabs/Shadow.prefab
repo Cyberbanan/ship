@@ -147,7 +147,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 194668}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: -37.8199997, y: 0, z: 11}
+  m_LocalPosition: {x: -37.7299995, y: 0, z: 9.86999989}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 492746}
@@ -367,10 +367,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee885b91909d849189c0d7de1bb08de3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  level1Position: {x: -37.7299995, y: 0, z: 9.86999989}
+  level2Position: {x: 27.9400005, y: 0, z: 21.0900002}
+  level3Position: {x: 21.0100002, y: 0, z: -36.6800003}
   randomizedMovementFrequency: .0199999996
   activeByDefault: 0
   distToActivate: 1
-  activationDelay: 1
+  activationDelayStart: 1
   maxDistanceFromTarget: 5
   teleportDistanceFromTarget: 4
 --- !u!135 &13503628
