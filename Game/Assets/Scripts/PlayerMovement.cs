@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour {
 	private float maxSpeed = 1.0f;
 	private float maxSpeedSqr;
 	private bool dead = false;
+	private bool isSafe = false;
 
 	private FloodFade floodFade = null;
 
@@ -92,6 +93,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				floodFade.setPause(true);
 			}
+			isSafe = true;
 		}
 	}
 
@@ -102,6 +104,7 @@ public class PlayerMovement : MonoBehaviour {
 			{
 				floodFade.setPause(false);
 			}
+			isSafe = false;
 		}
 	}
 	
@@ -116,5 +119,9 @@ public class PlayerMovement : MonoBehaviour {
 				floodFade.activateTimer();
 			}
 		}
+	}
+
+	public bool isInGlow() {
+		return isSafe;
 	}
 }

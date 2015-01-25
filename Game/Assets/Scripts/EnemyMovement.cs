@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class EnemyMovement : MonoBehaviour {
 
 	// Enemy movement
-	public GameObject targetObject;
+	private Player targetPlayer;
+	private GameObject targetObject;
 	public float randomizedMovementFrequency = 0.01f;
 	private float accelerationAmount = 1.0f;
 	
@@ -17,35 +18,44 @@ public class EnemyMovement : MonoBehaviour {
 
 	void Awake() {
 	}
+
+	void Start() {
+		targetPlayer = Player.main;
+		targetObject = targetPlayer.gameObject;
+	}
 	
 	void FixedUpdate() {
-		// Calculate out movement
-		Vector3 directionToTravel = new Vector3 (0.0f, 0.0f, 0.0f);
-		Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
 
+		// Add a random lurch
 		if (Random.value <= randomizedMovementFrequency) {
 			Vector3 randomDirection = new Vector3 (Random.value - 0.5f, 0.0f, Random.value - 0.5f).normalized * 10.0f;
-			Vector3 acceleration2 = new Vector3 (randomDirection.x * accelerationAmount, 0.0f, randomDirection.z * accelerationAmount);
-			rigidbody.AddForce (acceleration2, ForceMode.Impulse);
 			Debug.DrawRay (transform.position, randomDirection * 2, Color.yellow);
+
+			Vector3 randomAcceleration = new Vector3 (randomDirection.x * accelerationAmount, 0.0f, randomDirection.z * accelerationAmount);
+			rigidbody.AddForce (randomAcceleration, ForceMode.Impulse);
 		}
-		
 
-	
-			// don't need to path find, so move toward the target
-			directionToTravel = vectorToTarget.normalized;
-			Debug.DrawRay (transform.position, directionToTravel * 2, Color.white);
+		if (targetObject) {
+			PlayerMovement pm = targetPlayer.GetComponent<PlayerMovement>();
 
-		
-			// if we're too far from the player, teleport the enemy a bit closer
-			float currentDistanceFromTarget = vectorToTarget.magnitude;
-			if (currentDistanceFromTarget > maxDistanceFromTarget) {
+			// Only move toward the player if they're not in the glow
+			if (!pm.isInGlow()) {
+				Vector3 vectorToTarget = (targetObject.transform.position - transform.position);
+				Vector3 directionToTarget = vectorToTarget.normalized;
+				Debug.DrawRay (transform.position, directionToTarget * 2, Color.white);
+				Vector3 acceleration = new Vector3 (directionToTarget.x * accelerationAmount, 0.0f, directionToTarget.z * accelerationAmount);
+				rigidbody.AddForce (acceleration, ForceMode.Impulse);
 			}
 
-			// add the forces
-			Vector3 acceleration = new Vector3 (directionToTravel.x * accelerationAmount, 0.0f, directionToTravel.z * accelerationAmount);
-			rigidbody.AddForce (acceleration, ForceMode.Impulse);
+			/*
+						// if we're too far from the player, teleport the enemy a bit closer
+						float currentDistanceFromTarget = vectorToTarget.magnitude;
+						if (currentDistanceFromTarget > maxDistanceFromTarget) {
+						}
 
+			*/
+
+		}
 	}
 
 }
