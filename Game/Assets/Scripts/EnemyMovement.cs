@@ -125,6 +125,10 @@ public class EnemyMovement : MonoBehaviour {
 
 	}
 
+	public void reset() {
+		resetToLevel (targetPlayer.currentLevel);
+	}
+
 	void resetToLevel(int level) {
 		switch (level) {
 		case 0:
