@@ -102,8 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b9c88dc83b2dd94d89cfcae5930288e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GridWidth: 32
-  GridHeight: 32
+  GridWidth: 128
+  GridHeight: 50
   GroundPrefab: {fileID: 134012, guid: 2b700c380db5844658f8c31ff27630cc, type: 2}
   WallPrefab: {fileID: 100000, guid: b9fbe01a9b8bf4a209b3e349f42af998, type: 2}
   WaterPrefab: {fileID: 155222, guid: 63e41f097f4b14a45aaf3c4b561d66a5, type: 2}
@@ -320,10 +320,11 @@ GameObject:
   - 92: {fileID: 1248637503}
   - 124: {fileID: 1248637502}
   - 81: {fileID: 1248637501}
+  - 114: {fileID: 1248637497}
   - 114: {fileID: 1248637500}
   - 114: {fileID: 1248637499}
   - 114: {fileID: 1248637498}
-  - 114: {fileID: 1248637497}
+  - 114: {fileID: 1248637506}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -352,7 +353,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 257603142}
   m_GameObject: {fileID: 1248637496}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a773099f140e846f7835d27351846623, type: 3}
   m_Name: 
@@ -416,13 +417,13 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 257603142}
   m_GameObject: {fileID: 1248637496}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d5488e098d8f4eb492591bb089fe793, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  strengthX: .5
-  strengthY: .5
+  strengthX: .449999988
+  strengthY: .800000012
   fishEyeShader: {fileID: 4800000, guid: 874ceab4425f64bccb1d14032f4452b1, type: 3}
 --- !u!81 &1248637501
 AudioListener:
@@ -493,6 +494,81 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
+--- !u!114 &1248637506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11407574, guid: 526ec0ca100f94ab48bb4d8aa4929c88,
+    type: 2}
+  m_PrefabInternal: {fileID: 257603142}
+  m_GameObject: {fileID: 1248637496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f202adaee27c646fa9d90739bb84aa42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualizeFocus: 0
+  focalLength: 50
+  focalSize: 1
+  aperture: 1
+  focalTransform: {fileID: 0}
+  maxBlurSize: 20
+  highResolution: 0
+  blurType: 0
+  blurSampleCount: 2
+  nearBlur: 1
+  foregroundOverlap: 1
+  dofHdrShader: {fileID: 4800000, guid: acd613035ff3e455e8abf23fdc8c8c24, type: 3}
+  dx11BokehShader: {fileID: 4800000, guid: d8e82664aa8686642a424c88ab10164a, type: 3}
+  dx11BokehThreshhold: .5
+  dx11SpawnHeuristic: .0874999985
+  dx11BokehTexture: {fileID: 2800000, guid: a4cdca73d61814d33ac1587f6c163bca, type: 3}
+  dx11BokehScale: 1.20000005
+  dx11BokehIntensity: 2.5
+--- !u!1 &1917153859
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1917153861}
+  - 114: {fileID: 1917153860}
+  m_Layer: 0
+  m_Name: LevelImporter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1917153860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917153859}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6d3adb137fe4a141a70d6069badcf7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GroundPrefab: {fileID: 134012, guid: 3cdad5fe6e9cf4a76b571f169ebab6a7, type: 2}
+  WallPrefab: {fileID: 100000, guid: 0836e81c0faab4b938548292d5448eb2, type: 2}
+  WaterPrefab: {fileID: 155222, guid: 2883b16ae76064756a1ff203f3ab2b48, type: 2}
+  DoorPrefab: {fileID: 173780, guid: 1db8e6bcd28bc4c5baa2e591c4c52ed1, type: 2}
+  TileSize: .319999993
+  texture: {fileID: 2800000, guid: f26fbc62e909cfe47b4322c4fe18e3b0, type: 3}
+--- !u!4 &1917153861
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917153859}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.05681372, y: -2.27770727e-07, z: 4.87365532}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1001 &2145340216
 Prefab:
   m_ObjectHideFlags: 0
@@ -531,6 +607,14 @@ Prefab:
     - target: {fileID: 443546, guid: b0bc03e3cffc34f85b81e0b1004e8533, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443546, guid: b0bc03e3cffc34f85b81e0b1004e8533, type: 2}
+      propertyPath: GridWidth
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 11443546, guid: b0bc03e3cffc34f85b81e0b1004e8533, type: 2}
+      propertyPath: GridHeight
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b0bc03e3cffc34f85b81e0b1004e8533, type: 2}
